@@ -1,0 +1,50 @@
+1.所有有效表 为.xls 格式 其他视为无效数据或测试数据
+2.所有表格字体为微软雅黑11号字体
+3.表格第一列第二列背景色为黄色 第一列为中文说明(策划填*) 第二列为程序变量名(程序填*)
+4.所有含有多项值的数值变量 由英文半角分号(;)分隔
+5.所有表格项(策划填写)不能为空 数值为空则填0 其他为空填null
+6.所以有歧义的项 在第一列说明加上标注(注释说明)
+7.新增/修改字段 告知程序
+
+
+value.card.data.xls		=>	卡牌数据表
+value.card.skill.xls		=>	卡牌技能表
+value.card.take.xls		=>	抽卡表
+value.card.upexp.xls		=>	炼化表
+value.drop.data.xls		=>	掉落表
+value.group.attack1.xls		=>	卡牌攻击属性1
+value.group.attack2.xls		=>	卡牌攻击属性2
+value.group.defense1.xls	=>	卡牌防御属性1
+value.group.defense2.xls	=>	卡牌防御属性2
+value.mall.consu.xls		=>	消耗品表
+value.mall.data.xls		=>	商城数据表
+value.mall.gift.xls		=>	礼包表
+value.mall.item.xls		=>	道具表
+value.role.base.xls		=>	人物基本表
+value.role.effect.xls		=>	人物成就表
+value.shut.get.xls		=>	PVP奖励
+value.shut.soul.xls		=>	魂魄石表
+value.task.boss.xls		=>	任务boss表
+value.task.id.xls		=>	任务表
+value.task.init.xls		=>	任务初始表
+value.task.list.xls		=>	任务章表
+value.task.world.xls		=>	任务篇表
+value.trial.boss.xls		=>	试炼boss表
+value.trial.id.xls		=>	试炼表
+value.trial.limit.xls		=>	试炼限制表
+value.trial.list.xls		=>	试炼章表
+value.trial.world.xls		=>	试炼篇表
+value.get.gologin.xls		=>	连续登录表
+value.trial.relive.xls		=>	试炼复活
+value.task.init.xls		=>	任务初始表
+value.mall.consu.xls		=>	消耗品表
+value.mall.data.xls		=>	商城数据表
+value.mall.gift.xls		=>	礼包表
+value.mall.item.xls		=>	道具表
+value.effect.dj.xls		=>	渡劫成就表
+value.effect.role.xls		=>	个人成就表
+value.effect.task.xls		=>	故事达成成就
+value.effect.item.xls		=>	剧情道具收集成就
+value.effect.card.xls		=>	卡牌收集成就
+value.effect.start.xls		=>	稀有度成就(卡牌星级)
+valeu.effect.power.xls		=>	历练成就
