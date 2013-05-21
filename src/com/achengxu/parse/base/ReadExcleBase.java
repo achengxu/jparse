@@ -13,39 +13,28 @@ import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Map.Entry;
-
-import org.json.JSONArray;
-import org.json.JSONObject;
 
 import jxl.Sheet;
 import jxl.Workbook;
 import jxl.read.biff.BiffException;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 import com.achengxu.parse.conf.Config;
 import com.achengxu.parse.conf.Constant;
 
 public abstract class ReadExcleBase implements IParse {
 
-	protected HashMap<String, String> map = new HashMap<String, String>();
-	protected ArrayList<String> values = new ArrayList<String>();
-	protected ArrayList<String> keys = new ArrayList<String>();
-	protected StringBuffer xml = new StringBuffer();
+	protected final Map<String, String> map = new HashMap<String, String>();
+	protected final List<String> values = new ArrayList<String>();
+	protected final List<String> keys = new ArrayList<String>();
+	protected final StringBuffer xml = new StringBuffer();
 	protected JSONArray jsonArray = new JSONArray();
 
-	private int startNum = 1;
-
-	public abstract void setInputPath(String input);
-
-	public abstract String getInputPath();
-
-	public abstract String getClassName();
-
-	public abstract void setClassName(String className);
-
-	public List<String> getData() {
-		return values;
-	}
+	private final int startNum = 1;
 
 	public Object[] parse() throws BiffException, IOException, Exception {
 		Workbook book = Workbook.getWorkbook(new File(getInputPath()));
@@ -83,10 +72,10 @@ public abstract class ReadExcleBase implements IParse {
 				if (values.size() > 0) {
 					for (int p = 0; p < keys.size(); p++) {
 						String key = keys.get(p);
-						if (p >= getData().size()) {
+						if (p >= values.size()) {
 							continue;
 						}
-						String value = getData().get(p);
+						String value = values.get(p);
 						map.put(key, value);
 					}
 					xml.append("\n\t<" + outXmlPath + ">");
@@ -102,11 +91,14 @@ public abstract class ReadExcleBase implements IParse {
 	}
 
 	public void serializDataToFile() throws Exception {
+
+		Object[] object = parse();
+
+		if (Config.map.get(Constant.OUT_BEAN_ENABLE).equals("true")) {
+			newBean(object);
+		}
 		if (Config.map.get(Constant.OUT_XML_ENABLE).equals("true")) {
 			newXml();
-		}
-		if (Config.map.get(Constant.OUT_BEAN_ENABLE).equals("true")) {
-			newBean();
 		}
 		if (Config.map.get(Constant.OUT_JSON_ENABLE).equals("true")) {
 			newJson();
@@ -152,7 +144,7 @@ public abstract class ReadExcleBase implements IParse {
 		return file;
 	}
 
-	public void newBean() throws IOException, BiffException, Exception {
+	public void newBean(Object obj) throws IOException, BiffException, Exception {
 		if (Config.map.get(Constant.OUT_BEAN_ENABLE).equals("true")) {
 			String xlsPath = Config.map.get(Constant.IN_XLS_PATH);
 			String filePath = getInputPath();
@@ -160,7 +152,7 @@ public abstract class ReadExcleBase implements IParse {
 			mkdir(pathName);
 			FileOutputStream fs = new FileOutputStream(pathName);
 			ObjectOutputStream os = new ObjectOutputStream(fs);
-			Object[] obj = parse();
+
 			os.writeObject(obj);
 			os.flush();
 			fs.close();

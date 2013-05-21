@@ -29,7 +29,7 @@ public class CommonParam {
 	 * 
 	 * @parama filePath
 	 */
-	private void init(String filePath) {
+	private final void init(String filePath) {
 		FileInputStream fis = null;
 		prop = new Properties();
 		try {
@@ -52,7 +52,7 @@ public class CommonParam {
 		}
 	}
 
-	public String getString(String key) {
+	public final String getString(String key) {
 		if (null == key || key.equals("") || key.equals("null")) {
 			return "";
 		}
@@ -64,6 +64,5 @@ public class CommonParam {
 		}
 		return result;
 	}
-	
 
 }

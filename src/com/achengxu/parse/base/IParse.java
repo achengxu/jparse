@@ -1,12 +1,12 @@
 package com.achengxu.parse.base;
 
-public interface IParse {
+public abstract interface IParse {
 
 	public abstract Object[] parse() throws Exception;
 
 	public abstract void serializDataToFile() throws Exception;
 
-	public abstract	void serializFileToData() throws Exception;
+	public abstract void serializFileToData() throws Exception;
 
 	public abstract void setInputPath(String input);
 

@@ -1,41 +1,32 @@
 package com.achengxu.parse.base;
 
-public class ReadExcleJava extends com.achengxu.parse.base.ReadExcleBase {
+public final class ReadExcleJava extends com.achengxu.parse.base.ReadExcleBase {
 
 	private String className;
 	private String inputPath;
 	private boolean parse;
 
-	@Override
-	public void setInputPath(String input) {
+	public final void setInputPath(String input) {
 		inputPath = input;
 	}
 
-	@Override
-	public String getInputPath() {
+	public final String getInputPath() {
 		return inputPath;
 	}
 
-	public String getClassName() {
+	public final String getClassName() {
 		return className;
 	}
 
-	public void setClassName(String className) {
+	public final void setClassName(String className) {
 		this.className = className;
 	}
 
-	/**
-	 * @return the parse
-	 */
-	public boolean isParse() {
+	public final boolean isParse() {
 		return parse;
 	}
 
-	/**
-	 * @param parse
-	 *            the parse to set
-	 */
-	public void setParse(boolean parse) {
+	public final void setParse(boolean parse) {
 		this.parse = parse;
 	}
 
@@ -45,10 +36,9 @@ public class ReadExcleJava extends com.achengxu.parse.base.ReadExcleBase {
 		parse = init();
 	}
 
-	private boolean init() {
+	private final boolean init() {
 		boolean flag = false;
 		try {
-			super.parse();
 			this.serializDataToFile();
 			this.serializFileToData();
 			flag = true;

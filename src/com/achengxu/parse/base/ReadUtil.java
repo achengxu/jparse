@@ -37,13 +37,13 @@ import java.util.HashMap;
 import com.achengxu.parse.conf.Config;
 import com.achengxu.parse.conf.Constant;
 
-public class ReadUtil {
+public final class ReadUtil {
 
 	static {
 		Config.parseProperties("conf.properties");
 	}
 
-	public static void init() {
+	public final static void init() {
 		final HashMap<String, Class<?>> map = new HashMap<String, Class<?>>();
 		// 角色
 		map.put("value.role.base.xls", RoleBaseData.class);
@@ -98,7 +98,6 @@ public class ReadUtil {
 	 */
 	public static void main(String[] args) {
 		init();
-		// test();
 	}
 
 	/**
@@ -111,30 +110,22 @@ public class ReadUtil {
 	 * @param className
 	 * 
 	 */
-	public static void parse(String input, String output, String className) {
+	public final static void parse(String input, String output, String className) {
 		new ReadExcleJava(input, output, className);
 	}
 
-	public static void parse(String input, String output, Class<?> c) {
-		new ReadExcleJava(input, output, c.getName());
+	public final static void parse(String input, String output, Class<?> c) {
+		parse(input, output, c.getName());
 	}
 
-	public static void parse(String excleName, String className) {
-		String input = String.format("", excleName);
-		String output = String.format("", excleName);
-		new ReadExcleJava(input, output, className);
-	}
-
-	public static void parse(String excleName, Class<?> c) {
+	public final static void parse(String excleName, String className) {
 		String input = Config.map.get(Constant.IN_XLS_PATH) + "/" + excleName;
 		String output = excleName.substring(0, excleName.lastIndexOf('.')) + Config.map.get(Constant.OUT_BEAN_SUFFIX);
-		new ReadExcleJava(input, output, c.getName());
+		new ReadExcleJava(input, output, className);
 	}
 
-	public static void parse(String excleName, Object o) {
-		String input = String.format("", excleName);
-		String output = String.format("", excleName);
-		new ReadExcleJava(input, output, o.getClass().getName());
+	public final static void parse(String excleName, Class<?> c) {
+		parse(excleName, c.getName());
 	}
 
 }
