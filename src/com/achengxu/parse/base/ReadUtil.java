@@ -9,6 +9,13 @@ import game.data.card.group.GroupAttack2;
 import game.data.card.group.GroupDefense1;
 import game.data.card.group.GroupDefense2;
 import game.data.drop.DropPackData;
+import game.data.effect.EffectCardData;
+import game.data.effect.EffectDJData;
+import game.data.effect.EffectItemData;
+import game.data.effect.EffectPowerData;
+import game.data.effect.EffectRoleData;
+import game.data.effect.EffectStartData;
+import game.data.effect.EffectTaskData;
 import game.data.login.GoLoginData;
 import game.data.mall.GiftBagData;
 import game.data.mall.ItemData;
@@ -19,6 +26,7 @@ import game.data.name.NameTagData;
 import game.data.name.NameWomenData;
 import game.data.role.RoleBaseData;
 import game.data.shut.SoulData;
+import game.data.shut.SoulGetData;
 import game.data.task.TaskBossData;
 import game.data.task.TaskIdData;
 import game.data.task.TaskInitData;
@@ -62,6 +70,7 @@ public final class ReadUtil {
 		map.put("value.trial.relive.xls", TrialReLiveData.class);
 		// 斗法
 		map.put("value.shut.soul.xls", SoulData.class);
+		map.put("value.shut.get.xls", SoulGetData.class);
 		// 卡牌
 		map.put("value.card.data.xls", CardIdData.class);
 		map.put("value.card.take.xls", CardTakeData.class);
@@ -85,6 +94,15 @@ public final class ReadUtil {
 		map.put("value.group.attack2.xls", GroupAttack2.class);
 		map.put("value.group.defense1.xls", GroupDefense1.class);
 		map.put("value.group.defense2.xls", GroupDefense2.class);
+		
+		map.put("value.effect.dj.xls", EffectDJData.class);
+		map.put("value.effect.role.xls", EffectRoleData.class);
+		map.put("value.effect.task.xls", EffectTaskData.class);
+		map.put("value.effect.item.xls", EffectItemData.class);
+		map.put("value.effect.card.xls", EffectCardData.class);
+		map.put("value.effect.start.xls", EffectStartData.class);
+		map.put("value.effect.power.xls", EffectPowerData.class);
+		
 		long start = System.currentTimeMillis();
 		for (final String excleName : map.keySet()) {
 			parse(excleName, map.get(excleName));
