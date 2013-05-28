@@ -152,7 +152,6 @@ public abstract class ReadExcleBase implements IParse {
 			mkdir(pathName);
 			FileOutputStream fs = new FileOutputStream(pathName);
 			ObjectOutputStream os = new ObjectOutputStream(fs);
-
 			os.writeObject(obj);
 			os.flush();
 			fs.close();
